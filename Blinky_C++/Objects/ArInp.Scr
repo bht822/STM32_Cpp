@@ -1,0 +1,2 @@
+--create .\Objects\simple_LED2.lib
+.\objects\main.o
