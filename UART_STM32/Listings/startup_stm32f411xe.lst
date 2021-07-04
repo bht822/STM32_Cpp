@@ -70,23 +70,23 @@ ARM Macro Assembler    Page 2
 
 
    43 00000400         
-   44 00000400 00000200 
+   44 00000400 00002000 
                        Heap_Size
-                               EQU              0x00000200
+                               EQU              0x00002000
    45 00000400         
    46 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    47 00000000         __heap_base
    48 00000000         Heap_Mem
                                SPACE            Heap_Size
-   49 00000200         __heap_limit
-   50 00000200         
-   51 00000200                 PRESERVE8
-   52 00000200                 THUMB
-   53 00000200         
-   54 00000200         
-   55 00000200         ; Vector Table Mapped to Address 0 at Reset
-   56 00000200                 AREA             RESET, DATA, READONLY
+   49 00002000         __heap_limit
+   50 00002000         
+   51 00002000                 PRESERVE8
+   52 00002000                 THUMB
+   53 00002000         
+   54 00002000         
+   55 00002000         ; Vector Table Mapped to Address 0 at Reset
+   56 00002000                 AREA             RESET, DATA, READONLY
    57 00000000                 EXPORT           __Vectors
    58 00000000                 EXPORT           __Vectors_End
    59 00000000                 EXPORT           __Vectors_Size
@@ -743,7 +743,7 @@ ARM Macro Assembler    Page 12
               00000000 
               00000000 
               00000400 
-              00000200 
+              00002000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp.sp --apcs=
 interwork --depend=.\objects\startup_stm32f411xe.d -o.\objects\startup_stm32f41
@@ -816,7 +816,7 @@ Symbol: __heap_base
    Uses
       None
 Comment: __heap_base unused
-__heap_limit 00000200
+__heap_limit 00002000
 
 Symbol: __heap_limit
    Definitions
@@ -1558,7 +1558,7 @@ Comment: __user_initial_stackheap used once
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Absolute symbols
 
-Heap_Size 00000200
+Heap_Size 00002000
 
 Symbol: Heap_Size
    Definitions

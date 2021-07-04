@@ -1,0 +1,147 @@
+		
+// Creating class
+
+class LED{
+	// access specifier for the object properties
+	public:
+		// First have to be the constructor, which specifies what happens when the class is intiatiated
+		LED(){}; // an empty constructor
+		int current;
+		int voltage;
+		int diameter;
+			
+		float power(){
+			
+			return voltage*current;
+		
+		}
+
+};
+
+
+int main(){
+	
+	uart_init();
+	
+	// Simple instatiation of the LED class  use dot operator for the setters, getter and functions
+	LED myLED;
+	myLED.current = 10;
+	
+	// can also use as a pointer, in this case we use the -> operator
+	LED *pt_yourLED;
+	LED yourLED;
+	pt_yourLED = &yourLED;	
+	pt_yourLED->current = 20;
+	pt_yourLED->voltage = 10;
+	
+	
+	// pt_yourLED is the pointer to yourLED object , we can access the getters , setters and fuctions via the arrow operators as well
+
+	printf("\r\n Your led's current is %u ",yourLED.current);
+	printf("\r\n My led's current is %u",myLED.current);
+	printf(" \r\n Power of yourLED is %2f",pt_yourLED->power());
+	printf(" \r\n Power of yourLED is %2f",yourLED.power());
+
+	
+	
+	while(1){
+
+		
+	
+	}
+
+
+
+
+}
+
+-------------------------------------------------------------------------
+#include "uart.h"
+//#include <iostream>
+
+	/*
+	
+	Exploring embedded C++
+		
+		*/
+		
+		
+// Dynamic memory allocation
+
+
+int main(){
+	
+	uart_init();
+	
+	int size, itr;
+	int *array;
+	
+	
+	printf("How many scores in the array: ");
+	scanf("%i",&size);
+	
+	// malloc eqauivalent 
+	array = new int[size];
+	
+	
+	if(array == NULL){
+		printf(" Error: Array size large \r\n");
+		
+	}
+	else{
+		for(itr=0;itr<size;itr++){
+			printf("Enter the %i number:  ",itr +1);
+			scanf("%i",&array[itr]);
+		
+		}
+		printf("The array is: \r\n");
+		for(itr=0;itr<size;itr++){
+			printf("[%i] \r\n",array[itr]);
+		
+		}
+		
+	}
+	// free eqauivalent
+	delete [] array;
+		
+		while(1){}
+	
+
+
+}
+========================================================================================================================================================================================
+
+// Function template , only in C++ , similar to C# <T>
+
+// noarmal fuction , the return data type needs to be specified in both the functions below
+
+int int_adder(int a, int b){
+ return a+b;
+}
+
+
+float float_adder(float a, float b){
+ return a+b;
+}
+
+
+// Solution template function 
+template<class T>
+	T  adder(T a,T b){return a+b;}
+
+int main(){
+	
+	uart_init();
+	
+	printf("Int adder result %i \r\n",int_adder(5,3));
+	printf("Float adder result %4f \r\n",float_adder(2.5,4.5));
+	
+	printf("Template int adder result %d \r\n",(int) adder(5,3));
+	printf("Template float adder result %4f \r\n",(float)adder(2.5,4.5));
+	
+		
+		while(1){}
+	
+
+
+}
